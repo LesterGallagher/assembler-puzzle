@@ -1,0 +1,32 @@
+.container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    min-height: calc(100% - 45px);
+    height: calc(100% - 45px);
+}
+
+.root {
+    color: #fff;
+    height: 100vh;
+}
+
+.col1 {
+    float: left;
+    height: 100%;
+    width: 300px;
+    border-right: 1px solid #fff;
+}
+
+.col2 {
+    float: left;
+    height: 100%;
+    width: 100px;
+    border-right: 1px solid #fff;
+}
+
+.col3 {
+    float: right;
+    height: 100%;
+    width: calc(100% - 400px);
+}

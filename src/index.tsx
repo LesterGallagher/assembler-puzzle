@@ -3,20 +3,16 @@
  */
 
 import * as React from 'react'
-
 import styles from './styles.css'
+import App from './components/App/App';
 
-export type Props = { text: string }
+// export type Props = { text: string }
 
-export default class ExampleComponent extends React.Component<Props> {
+export default class ExampleComponent extends React.Component {
   render() {
-    const {
-      text
-    } = this.props
-
     return (
-      <div className={styles.test}>
-        Example Component: {text}
+      <div className={styles.root}>
+        <App />
       </div>
     )
   }

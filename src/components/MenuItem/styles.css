@@ -1,0 +1,27 @@
+
+.root {
+    border: 2px solid #fff;
+    border-radius: 4px;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    color: #fff;
+    text-align: center;
+}
+
+.root:hover {
+    background: #fff;
+    color: #000;
+}
+
+.container {
+    width: 100%;
+    max-width: 1400px;
+}
+
+.anchor {
+    color: inherit;
+    text-decoration: none;
+}
+
+
