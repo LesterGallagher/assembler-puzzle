@@ -5,24 +5,26 @@
 import * as React from 'react'
 import styles from './styles.css'
 import Game from '../../domain/Game';
-import CPURegisterButton from '../CPURegisterButton/CPURegisterButton';
+import CPUInstruction from '../CPUInstruction/CPUInstruction';
 
 
 export type Props = { game: Game };
 
 export default class GameToolbarInstructions extends React.Component<Props> {
     render() {
-        const registers = this.props.game.cpu.registers.map(register => {
+        const game = this.props.game;
+        const factories = this.props.game.cpu.allowedInstructions.map(factory => {
             return (
-                <CPURegisterButton
-                    key={register.registerName}
-                    register={register} />
+                <CPUInstruction
+                    key={factory.name}
+                    game={game}
+                    instructionFactory={factory} />
             );
         });
 
         return (
             <div className={styles.root}>
-                {registers}
+                {factories}
             </div>
         )
     }

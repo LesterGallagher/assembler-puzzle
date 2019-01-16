@@ -2,20 +2,22 @@ import EAXRegister from "./EAXRegister";
 import EBXRegister from "./EBXRegister";
 import ECXRegister from "./ECXRegister";
 import EDXRegister from "./EDXRegister";
-
 import CPU from './CPU';
 import ProcessorRegister from "./ProcessorRegister";
+import InstructionFactory from "./InstructionFactory";
 
 export default class CPUFactory {
     heapSize: number;
     stackSize: number;
     instructionSize: number;
     registers: ProcessorRegister[];
+    allowedInstructions: InstructionFactory[];
     
     constructor() {
         this.heapSize = 0;
         this.stackSize = 0;
         this.registers = [];
+        this.allowedInstructions = [];
     }
 
     setInstructionSize = (instructionSize: number) => {
@@ -38,6 +40,12 @@ export default class CPUFactory {
         return this;
     }
 
+    addAllowedInstruction = (name: string) => {
+        const factory = new InstructionFactory(name);
+        this.allowedInstructions.push(factory);
+        return this;
+    }
+
     addEasyModeRegisters = () => {
         const eax = new EAXRegister();
         const ebx = new EBXRegister();
@@ -49,6 +57,11 @@ export default class CPUFactory {
         this.addRegister(ecx);
         this.addRegister(edx);
 
+        return this;
+    }
+
+    addEasyModeInstructions = () => {
+        this.addAllowedInstruction('mov');
         return this;
     }
 
@@ -67,7 +80,8 @@ export default class CPUFactory {
             registers: this.registers,
             heapSize: this.heapSize,
             stackSize: this.stackSize,
-            instructionSize: this.instructionSize
+            instructionSize: this.instructionSize,
+            allowedInstructions: this.allowedInstructions
         };
     } 
 

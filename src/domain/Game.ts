@@ -13,6 +13,7 @@ export default class Game {
         switch (game.mode) {
             case 'easy':
                 cpuFactory.addEasyModeRegisters();
+                cpuFactory.addEasyModeInstructions();
             break;
             default: throw Error('Game mode ' + game.mode + ' does not exist');
         }

@@ -13,8 +13,8 @@ export default class Menu extends React.Component {
             <div className={styles.root}>
                 <div className={styles.container}>
                     <div className={styles.menuItemsWrapper}>
-                        {getGames().map(game => (
-                            <div className={styles.menuItem}>
+                        {getGames().map((game, i) => (
+                            <div key={i} className={styles.menuItem}>
                                 <MenuItem game={game} />
                             </div>
                         ))}

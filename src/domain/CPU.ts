@@ -2,12 +2,14 @@ import { Heap } from "./Heap";
 import { Stack } from "./Stack";
 import ProcessorRegister from "./ProcessorRegister";
 import InstructionSet from "./InstructionSet";
+import InstructionFactory from "./InstructionFactory";
 
 interface CPUConstructorOptions { 
     heapSize: number, 
     stackSize: number,
     registers: ProcessorRegister[],
     instructionSize: number
+    allowedInstructions: InstructionFactory[];
 }
 
 export default class CPU {
@@ -18,6 +20,7 @@ export default class CPU {
     heapSize: number;
     instructionSize: number;
     registers: ProcessorRegister[];
+    allowedInstructions: InstructionFactory[];
 
     constructor(options: CPUConstructorOptions) {
         this.stackSize = options.stackSize;
@@ -27,5 +30,6 @@ export default class CPU {
         this.stack = new Stack(options.stackSize);
         this.instructionSet = new InstructionSet(options.instructionSize);
         this.registers = options.registers;
+        this.allowedInstructions = options.allowedInstructions;
     }
 }
